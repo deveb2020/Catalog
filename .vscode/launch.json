@@ -35,7 +35,13 @@
 		{
 			"name": ".NET Core Attach",
 			"type": "coreclr",
-			"request": "attach"
+			"request": "attach",
+			"logging": {
+					"engineLogging": false,
+					"moduleLoad": false,
+					"exceptions": false,
+					"browserStdOut": false
+			}
 		}
 	]
 }
