@@ -29,7 +29,7 @@ namespace Catalog.Controllers
 				return items;
 			}
 
-			// GET /item/{id}
+			// GET /items/{id}
 			[HttpGet("{id}")]
 			public ActionResult<ItemDto> GetItem(Guid id)
 			{
@@ -42,7 +42,7 @@ namespace Catalog.Controllers
 				return item.AsDto();
 			}
 
-			// POST /item
+			// POST /items
 			[HttpPost]
 			public ActionResult<ItemDto> CreateItem(CreateItemDto itemDto)
 			{
@@ -71,12 +71,13 @@ namespace Catalog.Controllers
 					return NotFound();
 				}
 
-				Item updatedItem = existingItem with
+
+				var updatedItem = existingItem with
 				{
 					Name = itemDto.Name,
 					Price =  itemDto.Price
 				};
-
+				
 				repository.UpdateItem(updatedItem);
 
 				return NoContent();
