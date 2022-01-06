@@ -14,14 +14,29 @@ namespace Catalog.Repositories
 			new Item { Id = Guid.NewGuid(), Name = "Bronze Shield", Price = 18, CreatedDate = DateTimeOffset.UtcNow },
 		};
 
+	// GET ITEMS
 		public IEnumerable<Item> GetItems()
 		{
 			return items;
 		}
 
+	// GET ITEM
 		public Item GetItem(Guid id)
 		{
 			return items.Where(item => item.Id == id).SingleOrDefault();
+		}
+
+		// CREATE ITEM
+		public void CreateItem(Item item)
+		{
+			items.Add(item);
+		}
+
+		// UPDATE ITEM
+		public void UpdateItem(Item item)
+		{
+			var index = items.FindIndex(existingItem => existingItem.Id == item.Id);
+			items[index] = item;
 		}
 	}
 }

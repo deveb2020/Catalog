@@ -1,3 +1,4 @@
+using System.Net;
 using System;
 using Microsoft.AspNetCore.Mvc;
 using Catalog.Repositories;
@@ -28,7 +29,7 @@ namespace Catalog.Controllers
 				return items;
 			}
 
-			// GET /items/{id}
+			// GET /item/{id}
 			[HttpGet("{id}")]
 			public ActionResult<ItemDto> GetItem(Guid id)
 			{
@@ -39,6 +40,46 @@ namespace Catalog.Controllers
 					return NotFound();
 				}
 				return item.AsDto();
+			}
+
+			// POST /item
+			[HttpPost]
+			public ActionResult<ItemDto> CreateItem(CreateItemDto itemDto)
+			{
+				Item item = new ()
+				{
+					Id = Guid.NewGuid(),
+					Name = itemDto.Name,
+					Price = itemDto.Price,
+					CreatedDate = DateTimeOffset.UtcNow
+				};
+
+				repository.CreateItem(item);
+
+				return CreatedAtAction(nameof(GetItem), new { id = item.Id }, item.AsDto());
+			}
+
+
+			// UPDATE ITEM
+			[HttpPut("{id}")]
+			public ActionResult UpdateItem(Guid id, UpdateItemDto itemDto)
+			{
+				var existingItem =  repository.GetItem(id);
+
+				if ( existingItem is null )
+				{
+					return NotFound();
+				}
+
+				Item updatedItem = existingItem with
+				{
+					Name = itemDto.Name,
+					Price =  itemDto.Price
+				};
+
+				repository.UpdateItem(updatedItem);
+
+				return NoContent();
 			}
     }
 }
