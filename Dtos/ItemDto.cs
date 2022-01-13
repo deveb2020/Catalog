@@ -33,25 +33,25 @@ namespace Catalog.Dtos
         #region Properties
 
         /// <summary>
-        /// Identifiant objet
+        /// object Idendity
         /// </summary>
         [DataMember(Name = "id")]
         public Guid Id { get; init; }
 
         /// <summary>
-        /// Nom de l'objet
+        /// object name
         /// </summary>
         [DataMember(Name = "name")]
         public string Name { get; init; }
 
         /// <summary>
-        /// Prix de l'objet
+        /// object price
         /// </summary>
         [DataMember(Name = "price")]
         public decimal Price { get; init; }
 
         /// <summary>
-        /// Date de création
+        /// Date creation
         /// </summary>
         [DataMember(Name = "createdDate")]
         public DateTimeOffset CreatedDate { get; init; }

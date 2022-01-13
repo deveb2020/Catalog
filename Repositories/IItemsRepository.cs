@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Catalog.Entities;
 
 namespace Catalog.Repositories
@@ -14,30 +15,30 @@ namespace Catalog.Repositories
 		/// </summary>
 		/// <param name="id">Identifiant</param>
 		/// <returns>Item</returns>
-		Item GetItem(Guid id);
+		Task<Item> GetItemAsync(Guid id);
 
 		/// <summary>
 		/// Get a list of Items
 		/// </summary>
 		/// <returns>Enumerable items</returns>
-		IEnumerable<Item> GetItems();
+		Task<IEnumerable<Item>> GetItemsAsync();
 
 		/// <summary>
 		/// Creation of Item
 		/// </summary>
 		/// <param name="item">Item</param>
-		void CreateItem(Item item);
+		Task CreateItemAsync(Item item);
 
 		/// <summary>
 		/// Update Item
 		/// </summary>
 		/// <param name="item">Item</param>
-		void UpdateItem(Item item);
+		Task UpdateItemAsync(Item item);
 
 		/// <summary>
 		/// Delete Item
 		/// </summary>
 		/// <param name="id"></param>
-		void DeleteItem(Guid id);
+		Task DeleteItemAsync(Guid id);
 	}
 }
