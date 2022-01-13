@@ -9,94 +9,94 @@ using Catalog.Dtos;
 
 namespace Catalog.Controllers
 {
-		[ApiController]
-		[Route("Items")]
+    [ApiController]
+    [Route("Items")]
     public class ItemsController : ControllerBase
     {
-      private readonly IItemsRepository repository;
+        private readonly IItemsRepository repository;
 
-			public ItemsController(IItemsRepository repository)
-			{
-				this.repository = repository;
-			}
+        public ItemsController(IItemsRepository repository)
+        {
+            this.repository = repository;
+        }
 
-			// GET /items
-			[HttpGet]
-			public IEnumerable<ItemDto> GetItems()
-			{	
-				var items = repository.GetItems().Select( item => item.AsDto());
+        // GET /items
+        [HttpGet]
+        public IEnumerable<ItemDto> GetItems()
+        {
+            var items = repository.GetItems().Select(item => item.AsDto());
 
-				return items;
-			}
+            return items;
+        }
 
-			// GET /items/{id}
-			[HttpGet("{id}")]
-			public ActionResult<ItemDto> GetItem(Guid id)
-			{
-				var item = repository.GetItem(id);
-				
-				if ( item is null ) 
-				{
-					return NotFound();
-				}
-				return item.AsDto();
-			}
+        // GET /items/{id}
+        [HttpGet("{id}")]
+        public ActionResult<ItemDto> GetItem(Guid id)
+        {
+            var item = repository.GetItem(id);
 
-			// POST /items
-			[HttpPost]
-			public ActionResult<ItemDto> CreateItem(CreateItemDto itemDto)
-			{
-				Item item = new ()
-				{
-					Id = Guid.NewGuid(),
-					Name = itemDto.Name,
-					Price = itemDto.Price,
-					CreatedDate = DateTimeOffset.UtcNow
-				};
+            if (item is null)
+            {
+                return NotFound();
+            }
+            return item.AsDto();
+        }
 
-				repository.CreateItem(item);
+        // POST /items
+        [HttpPost]
+        public ActionResult<ItemDto> CreateItem(CreateItemDto itemDto)
+        {
+            Item item = new()
+            {
+                Id = Guid.NewGuid(),
+                Name = itemDto.Name,
+                Price = itemDto.Price,
+                CreatedDate = DateTimeOffset.UtcNow
+            };
 
-				return CreatedAtAction(nameof(GetItem), new { id = item.Id }, item.AsDto());
-			}
+            repository.CreateItem(item);
+
+            return CreatedAtAction(nameof(GetItem), new { id = item.Id }, item.AsDto());
+        }
 
 
-			// UPDATE ITEM
-			[HttpPut("{id}")]
-			public ActionResult UpdateItem(Guid id, UpdateItemDto itemDto)
-			{
-				var existingItem =  repository.GetItem(id);
+        // UPDATE ITEM
+        [HttpPut("{id}")]
+        public ActionResult UpdateItem(Guid id, UpdateItemDto itemDto)
+        {
+            var existingItem = repository.GetItem(id);
 
-				if ( existingItem is null )
-				{
-					return NotFound();
-				}
+            if (existingItem is null)
+            {
+                return NotFound();
+            }
 
-				var updatedItem = existingItem with
-				{
-					Name = itemDto.Name,
-					Price =  itemDto.Price
-				};
-				
-				repository.UpdateItem(updatedItem);
+            var updatedItem = existingItem with
+            {
+                Name = itemDto.Name,
+                Price = itemDto.Price
+            };
 
-				return NoContent();
-			}
+            repository.UpdateItem(updatedItem);
 
-			// Delete /Items/{id}
-			[HttpDelete("{id}")]
+            return NoContent();
+        }
 
-			public ActionResult DeleteItem(Guid id)
-			{
-				var existingItem =  repository.GetItem(id);
+        // Delete /Items/{id}
+        [HttpDelete("{id}")]
 
-				if ( existingItem is null )
-				{
-					return NotFound();
-				}
+        public ActionResult DeleteItem(Guid id)
+        {
+            var existingItem = repository.GetItem(id);
 
-				repository.DeleteItem(id);
+            if (existingItem is null)
+            {
+                return NotFound();
+            }
 
-				return NoContent();
-			}
+            repository.DeleteItem(id);
+
+            return NoContent();
+        }
     }
 }

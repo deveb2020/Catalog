@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/egzonberisha/Desktop/Catalog/Catalog.csproj": {}
+    "C:\\Users\\Mcnitch\\OneDrive\\Documents\\Projects\\CatalogTest\\Catalog.csproj": {}
   },
   "projects": {
-    "/Users/egzonberisha/Desktop/Catalog/Catalog.csproj": {
+    "C:\\Users\\Mcnitch\\OneDrive\\Documents\\Projects\\CatalogTest\\Catalog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/egzonberisha/Desktop/Catalog/Catalog.csproj",
+        "projectUniqueName": "C:\\Users\\Mcnitch\\OneDrive\\Documents\\Projects\\CatalogTest\\Catalog.csproj",
         "projectName": "Catalog",
-        "projectPath": "/Users/egzonberisha/Desktop/Catalog/Catalog.csproj",
-        "packagesPath": "/Users/egzonberisha/.nuget/packages/",
-        "outputPath": "/Users/egzonberisha/Desktop/Catalog/obj/",
+        "projectPath": "C:\\Users\\Mcnitch\\OneDrive\\Documents\\Projects\\CatalogTest\\Catalog.csproj",
+        "packagesPath": "C:\\Users\\Mcnitch\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mcnitch\\OneDrive\\Documents\\Projects\\CatalogTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/egzonberisha/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Mcnitch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,6 +40,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.14.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
@@ -61,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/5.0.404/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
