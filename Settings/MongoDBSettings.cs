@@ -16,8 +16,18 @@
         public int Port { get; set; }
 
         /// <summary>
+        /// User name DB
+        /// </summary>
+        public string User { get; set; }
+
+        /// <summary>
+        /// Password DB
+        /// </summary>
+        public string Password { get; set; }
+
+        /// <summary>
         /// Connection string
         /// </summary>
-        public string ConnectionString => $"mongodb://{Host}:{Port}";
+        public string ConnectionString => $"mongodb://{User}:{Password}@{Host}:{Port}";
     }
 }
