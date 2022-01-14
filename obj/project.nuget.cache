@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MGFvRQCzA3xnZYYfHzOU94Wn1qxjDEWk8b5agW1/SsnXkpyUi/25EBg0pNP4vM0ZnrG8l2VRWagoICx/lR+eAA==",
+  "dgSpecHash": "BOYGOLYTBUztK7BopgvKd5Zkx+RJAe/sQvPhKHxymspOmGrZWRGBBdkam9d0LuUcyvGUumqTMXbVyKgxhmcTIg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Mcnitch\\OneDrive\\Documents\\Projects\\CatalogTest\\Catalog.csproj",
   "expectedPackageFiles": [
@@ -17,6 +17,7 @@
     "C:\\Users\\Mcnitch\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\Mcnitch\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\Mcnitch\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Mcnitch\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512",
     "C:\\Users\\Mcnitch\\.nuget\\packages\\mongodb.bson\\2.14.1\\mongodb.bson.2.14.1.nupkg.sha512",
     "C:\\Users\\Mcnitch\\.nuget\\packages\\mongodb.driver\\2.14.1\\mongodb.driver.2.14.1.nupkg.sha512",
     "C:\\Users\\Mcnitch\\.nuget\\packages\\mongodb.driver.core\\2.14.1\\mongodb.driver.core.2.14.1.nupkg.sha512",

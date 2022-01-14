@@ -1,22 +1,22 @@
-using System;
+using Catalog.Repositories;
+using Catalog.Settings;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Catalog.Repositories;
-using MongoDB.Driver;
-using Catalog.Settings;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
-using System.Reflection;
-using System.IO;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using MongoDB.Driver;
 using Newtonsoft.Json;
+using System;
+using System.IO;
 using System.Linq;
 using System.Net.Mime;
-using Microsoft.AspNetCore.Http;
+using System.Reflection;
 
 namespace Catalog
 {
@@ -74,19 +74,19 @@ namespace Catalog
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog v1"));
+                
+                app.UseHttpsRedirection();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
-
+           
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
 
-                // verify if mongodb live
+                // verify if mongodb live package nugets healthChecks
                 endpoints.MapHealthChecks("/health/ready", new HealthCheckOptions()
                 {
                     Predicate = (check) => check.Tags.Contains("ready"),
@@ -98,7 +98,7 @@ namespace Catalog
                                 status = report.Status.ToString(),
                                 checks = report.Entries.Select(entry => new
                                 {
-                                    name= entry.Key,
+                                    name = entry.Key,
                                     status = entry.Value.Status.ToString(),
                                     exception = entry.Value.Exception != null ? entry.Value.Exception.Message : "none",
                                     duration = entry.Value.Duration.ToString(),
